@@ -1,0 +1,10 @@
+Button{
+    -fx-background-color: #20a142;
+    -fx-text-fill: white;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 12;
+}
+
+AnchorPane{
+    -fx-background-color: #9bfab4;
+}

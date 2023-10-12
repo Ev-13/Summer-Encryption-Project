@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Label layoutX="115.0" layoutY="34.0" stylesheets="@Stylesheet.css" text="Encryption Program" textFill="#014006">
+         <font>
+            <Font name="Century Gothic Bold" size="39.0" />
+         </font>
+      </Label>
+      <Button fx:id="encryptButton" layoutX="274.0" layoutY="213.0" mnemonicParsing="false" onAction="#encrypt" stylesheets="@Stylesheet.css" text="Encrypt" />
+      <Button fx:id="decryptButton" layoutX="273.0" layoutY="281.0" mnemonicParsing="false" onAction="#decrypt" stylesheets="@Stylesheet.css" text="Decrypt" />
+      <TextArea fx:id="plainTextArea" layoutX="32.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter plain text here" stylesheets="@Stylesheet.css" />
+      <TextArea fx:id="cipherTextArea" layoutX="370.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter cipher text here" stylesheets="@Stylesheet.css" />
+   </children>
+</AnchorPane>
