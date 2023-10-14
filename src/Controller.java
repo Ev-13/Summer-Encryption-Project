@@ -18,7 +18,8 @@ public class Controller {
 
     public void encrypt(ActionEvent event) throws IOException {
         String text = plainTextArea.getText();
-        String result = cipher.encryptAndDecryptCommon(text,EncryptOrDecrypt.e);
+        plainTextArea.clear();
+        String result = cipher.encryptAndDecryptCommon(text,EncryptOrDecrypt.e, 0);
         String numeralDate = toNumeral(LocalDate.now().getDayOfMonth());
         StringBuilder finalStr = new StringBuilder(numeralDate);
         finalStr.append(result);
@@ -28,12 +29,21 @@ public class Controller {
 
     public void decrypt(ActionEvent event) throws IOException {
         String text = cipherTextArea.getText();
+        cipherTextArea.clear();
         StringBuilder str = new StringBuilder(text);
+        int date_key = 0;
         for (int i = 0; i< 7; i++){
+            if(str.charAt(0) == 'X'){
+                date_key += 10;
+            } else if (str.charAt(0) == 'V') {
+                date_key += 5;
+            } else if (str.charAt(0) == 'I') {
+                date_key += 1;
+            }
             str.deleteCharAt(0);
         }
         text = str.toString();
-        String result = cipher.encryptAndDecryptCommon(text,EncryptOrDecrypt.d);
+        String result = cipher.encryptAndDecryptCommon(text,EncryptOrDecrypt.d, date_key);
         plainTextArea.setText(result);
     }
 

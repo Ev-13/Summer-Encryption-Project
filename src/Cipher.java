@@ -13,7 +13,7 @@ public class Cipher {
     }
 
 
-    public String encryptAndDecryptCommon(String message, EncryptOrDecrypt enOrDe){
+    public String encryptAndDecryptCommon(String message, EncryptOrDecrypt enOrDe, int key_to_use){
         StringBuilder str = new StringBuilder();
         for (int c = 0; c< message.length(); c++){
             int currentValue = stringToInt(message.charAt(c));
@@ -22,7 +22,7 @@ public class Cipher {
                 if (enOrDe == EncryptOrDecrypt.e){
                     newInt = (key + currentValue) % 95;
                 }else{
-                    newInt = Math.floorMod((currentValue - key), 95);
+                    newInt = Math.floorMod((currentValue - key_to_use), 95);
                 }
                 newInt = newInt + 32;
                 char newChar = (char) newInt;
