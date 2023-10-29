@@ -3,12 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <Label layoutX="115.0" layoutY="34.0" stylesheets="@Stylesheet.css" text="Encryption Program" textFill="#014006">
+      <Label layoutX="115.0" layoutY="14.0" stylesheets="@Stylesheet.css" text="Encryption Program" textFill="#014006">
          <font>
             <Font name="Century Gothic Bold" size="39.0" />
          </font>
@@ -17,5 +18,21 @@
       <Button fx:id="decryptButton" layoutX="273.0" layoutY="281.0" mnemonicParsing="false" onAction="#decrypt" stylesheets="@Stylesheet.css" text="Decrypt" />
       <TextArea fx:id="plainTextArea" layoutX="32.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter plain text here" stylesheets="@Stylesheet.css" />
       <TextArea fx:id="cipherTextArea" layoutX="370.0" layoutY="167.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter cipher text here" stylesheets="@Stylesheet.css" />
+      <TextField fx:id="plainFilename" layoutX="32.0" layoutY="109.0" promptText="Plain text filename" />
+      <TextField fx:id="cipherFilename" layoutX="370.0" layoutY="109.0" promptText="Cipher text filename" />
+      <Button fx:id="plainLoadButton" layoutX="192.0" layoutY="100.0" mnemonicParsing="false" onAction="#loadPlain" text="Load" />
+      <Button fx:id="plainSaveButton" layoutX="193.0" layoutY="126.0" mnemonicParsing="false" onAction="#savePlain" text="Save" />
+      <Button fx:id="cipherLoadButton" layoutX="526.0" layoutY="99.0" mnemonicParsing="false" onAction="#loadCipher" text="Load" />
+      <Button fx:id="cipherSaveButton" layoutX="527.0" layoutY="125.0" mnemonicParsing="false" onAction="#saveCipher" text="Save" />
+      <Label layoutX="-1.0" layoutY="148.0" text="Enter filename to load/save, or just type the plain text below">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="326.0" layoutY="148.0" text="Enter filename to load/save, or just type the cipher text below">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

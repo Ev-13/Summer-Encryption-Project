@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class Controller {
     @FXML
@@ -14,6 +15,12 @@ public class Controller {
     private TextArea plainTextArea;
     @FXML
     private TextArea cipherTextArea;
+    @FXML
+    private TextField plainFilename;
+    @FXML
+    private TextField cipherFilename;
+
+
     private Cipher cipher = new Cipher();
 
     public void encrypt(ActionEvent event) throws IOException {
@@ -24,6 +31,7 @@ public class Controller {
         StringBuilder finalStr = new StringBuilder(numeralDate);
         finalStr.append(result);
         String finish = finalStr.toString();
+        cipherTextArea.clear();
         cipherTextArea.setText(finish);
     }
 
@@ -44,6 +52,7 @@ public class Controller {
         }
         text = str.toString();
         String result = cipher.encryptAndDecryptCommon(text,EncryptOrDecrypt.d, date_key);
+        plainTextArea.clear();
         plainTextArea.setText(result);
     }
 
@@ -72,5 +81,30 @@ public class Controller {
             numeralDate.append("0");
         }
         return numeralDate.toString();
+    }
+
+
+    public void loadPlain(ActionEvent event) throws IOException {
+        String filename = plainFilename.getText();
+        String text = plainTextArea.getText();
+
+    }
+
+    public void savePlain(ActionEvent event) throws IOException {
+        String filename = plainFilename.getText();
+        String text = plainTextArea.getText();
+
+    }
+
+    public void loadCipher(ActionEvent event) throws IOException {
+        String filename = cipherFilename.getText();
+        String text = cipherTextArea.getText();
+
+    }
+
+    public void saveCipher(ActionEvent event) throws IOException {
+        String filename = cipherFilename.getText();
+        String text = cipherTextArea.getText();
+
     }
 }
