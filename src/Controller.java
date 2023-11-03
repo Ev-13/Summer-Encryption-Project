@@ -1,5 +1,7 @@
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.Scanner;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -86,25 +88,86 @@ public class Controller {
 
     public void loadPlain(ActionEvent event) throws IOException {
         String filename = plainFilename.getText();
-        String text = plainTextArea.getText();
+        String text;
+        try (FileReader filereader = new FileReader(filename);
+             BufferedReader bufferedreader = new BufferedReader(filereader);
+             Scanner in = new Scanner(bufferedreader)) {
+            in.useDelimiter("\r?\n|\r");
+            StringBuilder str = new StringBuilder();
+            while (in.hasNextLine()) {
+                str.append(in.nextLine());
+            }
+            text = str.toString();
+            if (text.isEmpty()) {
+                System.out.println("There is nothing in the plain text file");
+            } else {
+                plainTextArea.setText(text);
+                plainFilename.clear();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: Plain text file not found");
+        }
 
     }
 
     public void savePlain(ActionEvent event) throws IOException {
         String filename = plainFilename.getText();
         String text = plainTextArea.getText();
+        try (FileWriter fw = new FileWriter(filename);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter pw = new PrintWriter(bw)) {
+            if (!text.isEmpty()) {
+                pw.println(text);
+                pw.close();
+                plainTextArea.clear();
+            } else {
+                pw.close();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: Plain text file not found.");
+        }
 
     }
 
     public void loadCipher(ActionEvent event) throws IOException {
         String filename = cipherFilename.getText();
-        String text = cipherTextArea.getText();
-
+        String text;
+        try (FileReader filereader = new FileReader(filename);
+             BufferedReader bufferedreader = new BufferedReader(filereader);
+             Scanner in = new Scanner(bufferedreader)) {
+            in.useDelimiter("\r?\n|\r");
+            StringBuilder str = new StringBuilder();
+            while (in.hasNextLine()) {
+                str.append(in.nextLine());
+            }
+            text = str.toString();
+            if (text.isEmpty()) {
+                System.out.println("There is nothing in the cipher text file");
+            } else {
+                cipherTextArea.setText(text);
+                cipherFilename.clear();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: Cipher text file not found");
+        }
     }
 
     public void saveCipher(ActionEvent event) throws IOException {
         String filename = cipherFilename.getText();
         String text = cipherTextArea.getText();
+        try (FileWriter fw = new FileWriter(filename);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter pw = new PrintWriter(bw)) {
+            if (!text.isEmpty()) {
+                pw.println(text);
+                pw.close();
+                cipherTextArea.clear();
+            } else {
+                pw.close();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: Cipher text file not found.");
+        }
 
     }
 }
